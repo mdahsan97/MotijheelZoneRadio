@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOTIJHEEL ZONE RADIO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS for all styling */
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #d0e0d0; /* Slightly deeper greenish background */
+            color: #333;
+        }
+        .container {
+            width: 95%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #1a5330; /* Deep green */
+            border-bottom: 2px solid #5a945a; /* Deeper green border */
+            padding-bottom: 10px;
+            font-family: 'Roboto', cursive;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .search-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 250px;
+            font-family: 'Trebuchet MS', sans-serif; /* Applied Trebuchet MS here */
+        }
+        .search-container button {
+            padding: 8px 12px;
+            background-color: #1a5330;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-container button:hover {
+            background-color: #2e8b57;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #5a945a;
+            margin-bottom: 15px;
+        }
+        .tab-link {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #a2d2a2; /* Light greenish tab background */
+            border: 1px solid #5a945a;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Added transition */
+        }
+        .tab-link:hover {
+            background-color: #8bb88b;
+        }
+        .tab-link.active {
+            background-color: #1a5330; /* Darker green for active tab */
+            color: white;
+            border-color: #1a5330;
+        }
+        .tab-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #5a945a;
+            background-color: #f0fff0; /* Lighter greenish inside tab content */
+            border-radius: 0 5px 5px 5px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+            word-wrap: break-word;
+            font-size: 14px;
+        }
+        th {
+            background-color: #c0e0c0; /* Deeper background for table headers */
+        }
+        tr:nth-child(even) {
+            background-color: #f7fcf7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MOTIJHEEL ZONE RADIO</h1>
+    
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by Client Name...">
+        <button onclick="searchTable()">Search</button>
+    </div>
+
+    <div class="tabs">
+        <div class="tab-link active" onclick="openTab(event, 'malek-bts')">Malek BTS</div>
+        <div class="tab-link" onclick="openTab(event, 'jatrabari-bts')">Jatrabari BTS</div>
+        <div class="tab-link" onclick="openTab(event, 'imamganj-bts')">Imamganj BTS</div>
+        <div class="tab-link" onclick="openTab(event, 'concord-bts')">Concord BTS</div>
+        <div class="tab-link" onclick="openTab(event, 'ctg-rd-bts')">CTG Rd BTS</div>
+        <div class="tab-link" onclick="openTab(event, 'joypara-bts')">Joypara BTS</div>
+    </div>
+
+    <div id="malek-bts" class="tab-content active">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client Code</th>
+                        <th>Client Name</th>
+                        <th>BTS Name</th>
+                        <th>S/W IP & Port</th>
+                        <th>Radio IP (AP)</th>
+                        <th>Radio IP (CP)</th>
+                        <th>Link Type</th>
+                        <th>Radio Name</th>
+                        <th>SSID</th>
+                        <th>Channel width</th>
+                        <th>Frequency</th>
+                        <th>Preshared Key</th>
+                        <th>Mngmt VLAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="searchable-row">
+                        <td>00088:137</td>
+                        <td>IFIC Bank Limited: DC- 3rd Link</td>
+                        <td>Malek BTS</td>
+                        <td>123.200.15.3 -- 26</td>
+                        <td>10.200.149.114</td>
+                        <td>10.200.149.115</td>
+                        <td>P2P</td>
+                        <td>NANO POWER BEAM-M5-400</td>
+                        <td>1092018</td>
+                        <td>20 MHz</td>
+                        <td>5805</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="jatrabari-bts" class="tab-content">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client Code</th>
+                        <th>Client Name</th>
+                        <th>BTS Name</th>
+                        <th>S/W IP & Port</th>
+                        <th>Radio IP (AP)</th>
+                        <th>Radio IP (CP)</th>
+                        <th>Link Type</th>
+                        <th>Radio Name</th>
+                        <th>SSID</th>
+                        <th>Channel width</th>
+                        <th>Frequency</th>
+                        <th>Preshared Key</th>
+                        <th>Mngmt VLAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="searchable-row">
+                        <td>38284:6</td>
+                        <td>Department of Immigration & Passport: Regional Passport Office RPO Jatrabari 4004</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW -- GE0/0/2</td>
+                        <td>10.200.140.42</td>
+                        <td>10.200.140.43</td>
+                        <td>P2P</td>
+                        <td>NANO POWER BEAM-M5-400</td>
+                        <td>10122017</td>
+                        <td>10 MHz</td>
+                        <td>5785/ 5825</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>11463:7</td>
+                        <td>Midland Bank Ltd:MDBL:Aganagar</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW-- GE0/0/22</td>
+                        <td>172.16.17.50</td>
+                        <td>172.16.17.51</td>
+                        <td>P2M</td>
+                        <td>NANO POWER BEAM-M5-400</td>
+                        <td>midland</td>
+                        <td>25 MHz</td>
+                        <td>5870</td>
+                        <td>midland123</td>
+                        <td>15111</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>11157:37</td>
+                        <td>Mutual Trust Bank Ltd: Aganagar Branch, Keranigonj</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW-- GE0/0/22</td>
+                        <td>172.16.17.50</td>
+                        <td>172.16.17.53</td>
+			<td>P2M</td>
+                        <td>NANO POWER BEAM-M5-300</td>
+                        <td>midland</td>
+                        <td>25 MHz</td>
+                        <td>5870</td>
+                        <td>midland123</td>
+                        <td>15100</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>00079:11</td>
+                        <td>AB Bank Ltd: Jinjira Branch.</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW-- GE0/0/22</td>
+                        <td>172.16.17.50</td>
+                        <td>172.16.17.52</td>
+                        <td>P2M</td>
+                        <td>NANO POWER BEAM-M5-400</td>
+                        <td>midland</td>
+                        <td>25 MHz</td>
+                        <td>5870</td>
+                        <td>midland123</td>
+                        <td>15100</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>00019:111</td>
+                        <td>Janata Bank Limited:Gandaria Corp Branch</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW-- GE0/0/11</td>
+                        <td>172.16.21.130</td>
+                        <td>172.16.21.133</td>
+                        <td>P2Me</td>
+                        <td>PMP Cambium Eforce100 With Dish</td>
+                        <td>6092020</td>
+                        <td>20 MHz</td>
+                        <td>5760</td>
+                        <td>epmp-keranigonj</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>00578:133</td>
+                        <td>BRAC Bank Limited:City Group Apon Shomoy Gandaria Branch [ATM]</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW-- GE0/0/11</td>
+                        <td>172.16.21.130</td>
+                        <td>172.16.21.134</td>
+                        <td>P2Me</td>
+                        <td>PMP Cambium Eforce100 With Dish</td>
+                        <td>6092020</td>
+                        <td>20 MHz</td>
+                        <td>5760</td>
+                        <td>epmp-keranigonj</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>03786:14</td>
+                        <td>Renata Ltd: Burigonga Depot.</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW-- GE0/0/20</td>
+                        <td>10.200.140.106</td>
+                        <td>10.200.140.107</td>
+                        <td>P2M</td>
+                        <td>NANO AIRFIBER 5XHD</td>
+                        <td>mblabdullahpur</td>
+                        <td>20 MHz</td>
+                        <td>5730</td>
+                        <td>121224@L3</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>00676:32</td>
+                        <td>United Commercial Bank Limited: Dania Branch</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW -- GE0/0/21</td>
+                        <td>10.200.140.98</td>
+                        <td>10.200.140.100</td>
+                        <td>P2M</td>
+                        <td>NANO STATION M5</td>
+                        <td>icmh567</td>
+                        <td>20 MHz</td>
+                        <td>5775</td>
+                        <td>N/A</td>
+                        <td>600</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>5436:23</td>
+                        <td>NRB Commercial Bank Limited: Ekuria Branch</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW -- GE0/0/5</td>
+                        <td>10.200.140.10</td>
+                        <td>10.200.140.12</td>
+                        <td>P2M</td>
+                        <td>NANO POWER BEAM-M5-300</td>
+                        <td>4012017</td>
+                        <td>20 MHz</td>
+                        <td>5555/ 5375</td>
+                        <td>N/A</td>
+                        <td>1990</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>00413:791</td>
+                        <td>Dutch-Bangla Bank Limited:Matuail Branch</td>
+                        <td>Jatrabari BTS</td>
+                        <td>Huawei SW -- GE0/0/23</td>
+                        <td>172.16.21.98</td>
+                        <td>172.16.21.100</td>
+                        <td>P2Pe</td>
+                        <td>PMP Cambium Eforce100 With Dish</td>
+                        <td>epmpjatrabari</td>
+                        <td>20 MHz</td>
+                        <td>5350/ 5840</td>
+                        <td>epmp.jatrabari</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="imamganj-bts" class="tab-content">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client Code</th>
+                        <th>Client Name</th>
+                        <th>BTS Name</th>
+                        <th>S/W IP & Port</th>
+                        <th>Radio IP (AP)</th>
+                        <th>Radio IP (CP)</th>
+                        <th>Link Type</th>
+                        <th>Radio Name</th>
+                        <th>SSID</th>
+                        <th>Channel width</th>
+                        <th>Frequency</th>
+                        <th>Preshared Key</th>
+                        <th>Mngmt VLAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="searchable-row">
+                        <td>00085:16</td>
+                        <td>Shahjalal Islamic Bank: Keranigonj Branch</td>
+                        <td>Imamganj BTS</td>
+                        <td>10.66.61.2 -- 12</td>
+                        <td>172.16.9.146</td>
+                        <td>172.16.9.149</td>
+                        <td>P2M</td>
+                        <td>NANO POWER BEAM-M5-400</td>
+                        <td>imam</td>
+                        <td>20 MHz</td>
+                        <td>5120/5350</td>
+                        <td>N/A</td>
+                        <td>1010</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>00413:415</td>
+                        <td>DBBL:Rajabari Bazar FT, ID: F0547</td>
+                        <td>Imamganj BTS</td>
+                        <td>10.66.61.2 -- 12</td>
+                        <td>172.16.9.146</td>
+                        <td>172.16.9.154</td>
+                        <td>P2M</td>
+                        <td>NANO POWER BEAM-M5-400</td>
+                        <td>imam</td>
+                        <td>20 MHz</td>
+                        <td>5120/5350</td>
+                        <td>N/A</td>
+                        <td>1013</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>6147:1</td>
+                        <td>Edotco Bangladesh Co. Ltd.: Nawabganj Office</td>
+                        <td>Imamganj BTS</td>
+                        <td>10.66.61.2 -- 28</td>
+                        <td>10.200.230.234</td>
+                        <td>10.200.230.235</td>
+                        <td>P2P</td>
+                        <td>NANO POWER BEAM-M5-400</td>
+                        <td>EDOTCO</td>
+                        <td>8 MHz</td>
+                        <td>5300/ 5860</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="concord-bts" class="tab-content">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client Code</th>
+                        <th>Client Name</th>
+                        <th>BTS Name</th>
+                        <th>S/W IP & Port</th>
+                        <th>Radio IP (AP)</th>
+                        <th>Radio IP (CP)</th>
+                        <th>Link Type</th>
+                        <th>Radio Name</th>
+                        <th>SSID</th>
+                        <th>Channel width</th>
+                        <th>Frequency</th>
+                        <th>Preshared Key</th>
+                        <th>Mngmt VLAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="searchable-row">
+                        <td>1437988:1</td>
+                        <td>Diamond Disposable and Plastic Industries Ltd</td>
+                        <td>Concord BTS</td>
+                        <td>10.67.3.4 -- 33</td>
+                        <td>10.200.144.218</td>
+                        <td>10.200.144.219</td>
+                        <td>P2Pe</td>
+                        <td>PMP Cambium Eforce100 With Dish</td>
+                        <td>3112022</td>
+                        <td>20 MHz</td>
+                        <td>5375/5340</td>
+                        <td>diamond12345</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>1541917:8</td>
+                        <td>PRAN DAIRY LTD: PRAN-DIST-KERANIGONJ</td>
+                        <td>Concord BTS</td>
+                        <td>10.67.3.3 -- 15</td>
+                        <td>10.200.155.154</td>
+                        <td>10.200.155.155</td>
+                        <td>P2Pe</td>
+                        <td>PMP Cambium Eforce100 With Dish</td>
+                        <td>5072022</td>
+                        <td>20 MHz</td>
+                        <td>5215/5785</td>
+                        <td>pran12345</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>1600139:94</td>
+                        <td>MBL: Abdullahpur Branch</td>
+                        <td>Concord BTS</td>
+                        <td>10.67.3.3 -- 17</td>
+                        <td>10.200.155.170</td>
+                        <td>10.200.155.171</td>
+                        <td>P2P</td>
+                        <td>NANO POWER BEAM-M5-400</td>
+                        <td>151122</td>
+                        <td>10 MHz</td>
+                        <td>5130/ 5750</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>1737587:1</td>
+                        <td>Directorate of Pre-Paid Metering System BPDB: Bidyut Bhaban_Dhaka_Main Link</td>
+                        <td>Concord BTS</td>
+                        <td>10.67.3.4 -- 41</td>
+                        <td>10.200.144.154</td>
+                        <td>10.200.144.155</td>
+                        <td>P2P</td>
+                        <td>PMP Cambium Eforce100 With Dish</td>
+                        <td>link321</td>
+                        <td>20 MHz</td>
+                        <td>5100/5350</td>
+                        <td>tssa012419</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>1826763:9</td>
+                        <td>Vitalac Dairy & Food Industries Ltd: Secondary</td>
+                        <td>Concord BTS</td>
+                        <td>10.67.3.3 -- 4</td>
+                        <td>10.200.125.202</td>
+                        <td>10.200.125.203</td>
+                        <td>P2P</td>
+                        <td>PowerBeam M5 620</td>
+                        <td>vitalic</td>
+                        <td>20 MHz</td>
+                        <td>5250</td>
+                        <td>vitalic123</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="ctg-rd-bts" class="tab-content">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client Code</th>
+                        <th>Client Name</th>
+                        <th>BTS Name</th>
+                        <th>S/W IP & Port</th>
+                        <th>Radio IP (AP)</th>
+                        <th>Radio IP (CP)</th>
+                        <th>Link Type</th>
+                        <th>Radio Name</th>
+                        <th>SSID</th>
+                        <th>Channel width</th>
+                        <th>Frequency</th>
+                        <th>Preshared Key</th>
+                        <th>Mngmt VLAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="searchable-row">
+                        <td>00578:223</td>
+                        <td>BRAC Bank Limited: Shyampur SKB</td>
+                        <td>CTG Rd BTS</td>
+                        <td></td>
+                        <td>10.200.152.202</td>
+                        <td>10.200.152.203</td>
+                        <td>P2P</td>
+                        <td>NANO POWER BEAM-5AC-400</td>
+                        <td>TEST</td>
+                        <td>10 MHz</td>
+                        <td>5345</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="joypara-bts" class="tab-content">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client Code</th>
+                        <th>Client Name</th>
+                        <th>BTS Name</th>
+                        <th>S/W IP & Port</th>
+                        <th>Radio IP (AP)</th>
+                        <th>Radio IP (CP)</th>
+                        <th>Link Type</th>
+                        <th>Radio Name</th>
+                        <th>SSID</th>
+                        <th>Channel width</th>
+                        <th>Frequency</th>
+                        <th>Preshared Key</th>
+                        <th>Mngmt VLAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="searchable-row">
+                        <td>2120:55:00</td>
+                        <td>Agrani Bank Limited:ABL:Kolapara Branch</td>
+                        <td>Joypara BTS</td>
+                        <td>10.67.1.202 -- 0/4</td>
+                        <td>10.200.134.74</td>
+                        <td>10.200.134.75</td>
+                        <td>P2P</td>
+                        <td>PowerBeam M5 400</td>
+                        <td>ABL</td>
+                        <td>10 Mhz</td>
+                        <td>5500 MHz</td>
+                        <td>ABL</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>15506:04:00</td>
+                        <td>Bangladesh Krishi Bank, Head Office:Hashara Branch</td>
+                        <td>Joypara BTS</td>
+                        <td>10.59.1.30 -- 0/11</td>
+                        <td>10.200.133.146</td>
+                        <td>10.200.133.147</td>
+                        <td>P2P</td>
+                        <td>Rocket 5AC Lite</td>
+                        <td>BKB / hasara07112022</td>
+                        <td>10 Mhz</td>
+                        <td>5340 MHz</td>
+                        <td>hasara07112022</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>422:12:00</td>
+                        <td>Dutch-Bangla Bank Limited:DBBL:Nimtola Bazar FT, ID: F0490:</td>
+                        <td>Concord BTS</td>
+                        <td>10.67.3.4 -- 0/10</td>
+                        <td>10.200.143.226</td>
+                        <td>10.200.143.228</td>
+                        <td>P2M</td>
+                        <td>PowerBeam M5 400</td>
+                        <td>PBLNIM / pblnim@321</td>
+                        <td>10 Mhz</td>
+                        <td>5370 MHz</td>
+                        <td>PBLNIM / pblnim@321</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>87:05:00</td>
+                        <td>Shahjalal Islamic Bank:Nimtola [Shikarpur] Branch</td>
+                        <td>Concord BTS</td>
+                        <td>10.67.3.4 -- 0/10</td>
+                        <td>10.200.143.226</td>
+                        <td>10.200.143.229</td>
+                        <td>P2M</td>
+                        <td>PowerBeam M5 400</td>
+                        <td>PBLNIM / pblnim@321</td>
+                        <td>10 Mhz</td>
+                        <td>5370 MHz</td>
+                        <td>PBLNIM / pblnim@321</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>846:11:00</td>
+                        <td>National Bank Limited:Bhaghyakul Branch</td>
+                        <td>Joypara BTS</td>
+                        <td>10.67.1.202 -- 0/41</td>
+                        <td>10.200.226.34</td>
+                        <td>10.200.226.35</td>
+                        <td>P2P</td>
+                        <td>Rocket 5AC Lite</td>
+                        <td>21102024 / 21102024</td>
+                        <td>20 Mhz</td>
+                        <td>5330 MHz</td>
+                        <td>21102024 / 21102024</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>846:17:00</td>
+                        <td>National Bank Limited:NBL:Baghrabazar Branch</td>
+                        <td>Joypara BTS</td>
+                        <td>10.67.1.202 -- 0/21</td>
+                        <td>10.200.133.226</td>
+                        <td>10.200.133.227</td>
+                        <td>P2P</td>
+                        <td>PowerBeam M5 400</td>
+                        <td>ABC</td>
+                        <td>10 Mhz</td>
+                        <td>5440 MHz</td>
+                        <td>ABC</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>34224:1</td>
+                        <td>Barrister Nazmul Huda’s Residence</td>
+                        <td>Joypara BTS</td>
+                        <td>10.67.1.202 -- 0/37</td>
+                        <td>10.200.230.58</td>
+                        <td>10.200.230.59</td>
+                        <td>P2Pe</td>
+                        <td>PMP Cambium Eforce200 With Dish</td>
+                        <td>BNHR EP / link321</td>
+                        <td>05 Mhz</td>
+                        <td>5760 MHz</td>
+                        <td>BNHR EP / link3210</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td>2116:54:00</td>
+                        <td>Agrani Bank Limited:Churain Bazar Branch</td>
+                        <td>Joypara BTS</td>
+                        <td>10.67.1.202 -- 0/30</td>
+                        <td>10.200.230.98</td>
+                        <td>10.200.230.99</td>
+                        <td>P2P</td>
+                        <td>PowerBeam M5 400</td>
+                        <td>ablchurain</td>
+                        <td>8 Mhz</td>
+                        <td>5780 MHz</td>
+                        <td>ablchurain</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+<script>
+    // Initial code you provided for tab switching
+    function openTab(evt, tabName) {
+        var i, tabContent, tabLinks;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabLinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Updated search functionality
+    function searchTable() {
+        var input, filter, tabContents, i, k, tr, td, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        
+        tabContents = document.getElementsByClassName("tab-content");
+        
+        // Loop through all tab contents
+        for (k = 0; k < tabContents.length; k++) {
+            var currentTabContent = tabContents[k];
+            var foundMatchInTab = false; // To check if any result is found in this tab
+            tr = currentTabContent.getElementsByClassName("searchable-row");
+            
+            // Loop through all table rows in the current tab
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1]; // Get the 'Client Name' column (index 1)
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = ""; // Show the row
+                        foundMatchInTab = true;
+                    } else {
+                        tr[i].style.display = "none"; // Hide rows that don't match
+                    }
+                }
+            }
+
+            // After searching the entire tab, if a match was found, activate it
+            if (foundMatchInTab && filter.length > 0) {
+                // First, deactivate all tabs
+                for (var j = 0; j < tabContents.length; j++) {
+                    tabContents[j].classList.remove("active");
+                }
+                document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
+
+                // Then, activate the tab where a match was found
+                currentTabContent.classList.add("active");
+                document.querySelector(`.tab-link[onclick*='${currentTabContent.id}']`).classList.add('active');
+
+            } else if (filter.length === 0) {
+                // If search is empty, show all rows and default to the first tab
+                for (i = 0; i < tr.length; i++) {
+                    tr[i].style.display = "";
+                }
+                // Also, ensure the correct tab is active (defaulting to the first one)
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-link').forEach(b => b.classList.remove('active'));
+                document.getElementById('malek-bts').classList.add('active');
+                document.querySelector(`.tab-link[onclick*='malek-bts']`).classList.add('active');
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
